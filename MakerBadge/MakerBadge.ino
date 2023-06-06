@@ -25,7 +25,7 @@ void setup() {
   // Initialize the display
   display.init(115200);
 
-  esp_sleep_enable_timer_wakeup(5 * 60 * 1000000);  // Wake up after 5 minutes
+  esp_sleep_enable_timer_wakeup(1 * 60 * 1000000);  // Wake up after 1 minute
 
   // Connect to Wi-Fi
   WiFi.begin(ssid, password);
@@ -73,7 +73,7 @@ void setup() {
         display.setRotation(3);
         display.setFullWindow();
         display.fillScreen(GxEPD_WHITE);
-        display.drawBitmap(0, 0, igor_bmp, 250, 122, GxEPD_BLACK);
+        display.drawBitmap(0, 0, sarka_bmp, 250, 122, GxEPD_BLACK);
         display.setCursor(158, 96);
         display.setTextColor(GxEPD_BLACK);
         display.print("Teplota: ");
@@ -86,6 +86,7 @@ void setup() {
       } while (display.nextPage());
     }
   }
+  esp_deep_sleep_start();
 }
 
 void loop() {
